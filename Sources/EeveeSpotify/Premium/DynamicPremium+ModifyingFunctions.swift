@@ -32,6 +32,271 @@ private let propertyReplacements = [
     EeveePropertyReplacement(name: "is_remove_from_queue_enabled_for_mft_plus", modification: .remove),
     EeveePropertyReplacement(name: "is_reordering_for_mft_plus_allowed", modification: .remove),
     
+    // Ads & Campaigns
+    EeveePropertyReplacement(name: "ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "ad_metadata", modification: .remove),
+    EeveePropertyReplacement(name: "ad_slots", modification: .remove),
+    EeveePropertyReplacement(name: "enable_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audio_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_display_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_video_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_premium_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "show_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "show_premium_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_campaigns", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_promotions", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_search_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_search_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_search_banner_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_search_banner_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_search_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_search_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_search_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_home_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_home_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_home_banner_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_home_banner_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_home_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_home_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_home_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_now_playing_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_now_playing_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_now_playing_banner_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_now_playing_banner_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_now_playing_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_now_playing_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_now_playing_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_artist_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_artist_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_artist_banner_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_artist_banner_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_artist_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_artist_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_artist_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_playlist_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_playlist_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_playlist_banner_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_playlist_banner_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_playlist_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_playlist_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_playlist_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_album_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_album_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_album_banner_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_album_banner_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_album_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_album_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_album_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_library_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_library_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_library_banner_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_library_banner_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_library_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_library_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_library_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audiobook_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audiobook_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audiobook_banner_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audiobook_banner_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audiobook_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audiobook_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audiobook_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_podcast_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_podcast_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_podcast_banner_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_podcast_banner_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_podcast_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_podcast_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_podcast_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_content", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_playlists", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_sessions", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_stories", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_videos", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_artist", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_artists", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_album", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_albums", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_track", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_tracks", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_show", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_shows", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_episode", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_episodes", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_audiobook", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_audiobooks", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_podcast", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_podcasts", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_search", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_search_results", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_search_banner", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_search_banners", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_home", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_home_banner", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_home_banners", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_now_playing", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_now_playing_banner", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_now_playing_banners", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_artist_banner", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_artist_banners", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_playlist_banner", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_playlist_banners", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_album_banner", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_album_banners", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_library_banner", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_library_banners", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_audiobook_banner", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_audiobook_banners", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_podcast_banner", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_podcast_banners", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_search_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_search_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_home_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_home_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_now_playing_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_now_playing_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_artist_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_artist_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_playlist_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_playlist_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_album_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_album_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_library_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_library_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_audiobook_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_audiobook_sponsored_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_podcast_sponsored_ad", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_podcast_sponsored_ads", modification: .setBool(false)),
+    
+    // ─────────────────────────────────────────────────────────────────────
+    // Ad on App Open — the "Advertisement" home-screen banner (Pepsi, etc.)
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(scope: "ios-ad-on-app-open", modification: .remove),
+    // The modern RemoteConfig scope for AdOnAppOpen (confirmed in binary).
+    // This is the scope that the AuthFetcher re-fetches after minimumFetchIntervalSeconds
+    // (typically a few hours), causing ads to reappear. Removing this scope prevents
+    // the AdOnAppOpenServiceImpl from enabling the ad on subsequent re-fetches.
+    EeveePropertyReplacement(scope: "ios-feature-adonappopen", modification: .remove),
+    // Explicitly disable the individual flags within ios-feature-adonappopen scope
+    // to ensure they are disabled even if the scope removal is not effective.
+    EeveePropertyReplacement(name: "enabled", scope: "ios-feature-adonappopen", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "background_refresh_frequency_seconds", scope: "ios-feature-adonappopen", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "is_ad_on_app_open_enabled", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "ad_on_app_open_enabled", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "adonappopen_enabled", modification: .setBool(false)),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Marquee — full-screen artist/brand ad overlay
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(scope: "marquee", modification: .remove),
+    // Modern RemoteConfig scope for Marquee (confirmed in binary as 'ios-feature-marquee').
+    EeveePropertyReplacement(scope: "ios-feature-marquee", modification: .remove),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Leave Behind ads — shown when leaving Now Playing
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(scope: "leavebehindadsbase", modification: .remove),
+    // Modern RemoteConfig scope for Leave Behind ads (confirmed in binary as 'ios-feature-leavebehindadsbase').
+    EeveePropertyReplacement(scope: "ios-feature-leavebehindadsbase", modification: .remove),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // In-stream / audio / video stream ads
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(scope: "ios-feature-instreamads", modification: .remove),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Embedded ad CTA elements — search-page and home-page display ads
+    // These scopes are responsible for the 'Advertisement' banners shown
+    // in the screenshots (Cartier on Search, Ross on Home).
+    // Confirmed scope names from binary analysis of the decrypted IPA.
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(scope: "ios-adsembedded-embeddedctaelements-impl", modification: .remove),
+    EeveePropertyReplacement(scope: "ios-adsnowplaying-embeddednpv-impl", modification: .remove),
+    EeveePropertyReplacement(scope: "ios-adsplatform-elementimpl", modification: .remove),
+    EeveePropertyReplacement(scope: "ios-system-adssponsoredcontext", modification: .remove),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Ads base infrastructure
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(name: "enable_ads_connect_state_observer", scope: "ios-feature-adsbase", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_minimal_preroll_management", scope: "ios-feature-adsbase", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_swift_ads_base_movement_logger", scope: "ios-feature-adsbase", modification: .setBool(false)),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Ads Swift context tracking
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(scope: "ios-feature-adsswift", modification: .remove),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Now Playing video ads
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(name: "embedded_npv_video_show_with_canvas", scope: "ios-feature-adsnowplayingui", modification: .setBool(false)),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Sponsored context (sponsored playlists in Now Playing bar)
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(name: "sponsored_context_mismatch_aderror_enabled", scope: "ios-feature-adssponsoredcontext", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "sponsored_playlist_v2_enabled", scope: "ios-feature-adssponsoredcontext", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "sponsored_npb_slot_fetch_enabled", scope: "ios-feature-adssponsoredcontextnpbattachment", modification: .setBool(false)),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Ads identity tracking (SKAdNetwork / attribution)
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(scope: "ios-feature-adsidentitytracking", modification: .remove),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Search page ads & promotions
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(name: "prompted_playlist_merchandizing_enabled", scope: "ios-feature-search", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "social_proof_playlist_enabled", scope: "ios-feature-search", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "social_proof_plays_in_search_enabled", scope: "ios-feature-search", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "video_carousel_section_enabled", scope: "ios-feature-search", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "watch_feed_section_enabled", scope: "ios-feature-search", modification: .setBool(false)),
+
+    // ─────────────────────────────────────────────────────────────────────
+    // Additional legacy / non-scoped ad flags
+    // ─────────────────────────────────────────────────────────────────────
+    EeveePropertyReplacement(name: "enable_popups", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_leave_behind_ads_card_element", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "music_npv_leavebehinds_enabled", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_ads_on_podcast", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_display_element", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_video_element", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "is_promo_cta_enabled", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "show_time_cap_upsell_with_premium_badge", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_video_time_cap_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_video_time_cap_upsell_on_search", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "music_video_upsell_enabled", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "is_gbb_upsell_enabled", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "should_show_pigeon_upsell", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "disable_suggested_tracks_upsell", modification: .setBool(true)),
+    EeveePropertyReplacement(name: "is_enabled_pt2", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "show_skip_button_during_skippable_ads", modification: .setBool(true)),
+    EeveePropertyReplacement(name: "sponsored_playlist_v2_header_dismissible", modification: .setBool(true)),
+    EeveePropertyReplacement(name: "use_mock_sponsorship_endpoint", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_popup", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "show_popups", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "show_popup", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_interstitials", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_interstitial", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_overlays", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_overlay", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_promotions_on_home", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_promotions_on_search", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_search_page_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_home_page_ads", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_billboard", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_billboards", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audio_ads_player", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_display_ads_player", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_video_ads_player", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_audio_ads_player_v2", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_display_ads_player_v2", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_video_ads_player_v2", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_search_results_v2", modification: .setBool(false)),
+    EeveePropertyReplacement(name: "enable_sponsored_home_results_v2", modification: .setBool(false)),
+
     // 😡😡😡 spotify, stop changing the scroll logic
     EeveePropertyReplacement(name: "should_nova_scroll_use_scrollsita", modification: .remove)
 ]
@@ -68,6 +333,18 @@ private func modifyAttributes(_ attributes: inout [String: AccountAttribute]) {
     
     attributes["ads"] = AccountAttribute.with {
         $0.boolValue = false
+    }
+    
+    attributes["ab-ad-player-targeting"] = AccountAttribute.with {
+        $0.stringValue = "0"
+    }
+    
+    attributes["allow-advertising-id-transmission"] = AccountAttribute.with {
+        $0.boolValue = false
+    }
+    
+    attributes["restrict-advertising-id-transmission"] = AccountAttribute.with {
+        $0.boolValue = true
     }
 
     attributes["can_use_superbird"] = AccountAttribute.with {
@@ -157,8 +434,18 @@ private func modifyAttributes(_ attributes: inout [String: AccountAttribute]) {
     attributes.removeValue(forKey: "on-demand-trial-in-progress")
     attributes.removeValue(forKey: "smart-shuffle")
     
-    // Additional keys that can trigger backend validation mismatches
+    // Additional keys that can trigger backend validation mismatches or premium popups
     attributes.removeValue(forKey: "at-signal")
     attributes.removeValue(forKey: "feature-set-id-masked")
     attributes.removeValue(forKey: "strider-key")
+    attributes.removeValue(forKey: "is-eligible-for-trial")
+    attributes.removeValue(forKey: "is-eligible-for-upsell")
+    attributes.removeValue(forKey: "upsell-state")
+    attributes.removeValue(forKey: "ad-session-persistence")
+    attributes.removeValue(forKey: "ad-formats-preroll-video")
+    
+    for i in 1...100 {
+        attributes.removeValue(forKey: "is-premium-eligible-v\(i)")
+    }
+    attributes.removeValue(forKey: "is-premium-eligible")
 }

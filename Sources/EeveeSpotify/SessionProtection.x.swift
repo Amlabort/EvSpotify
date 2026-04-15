@@ -257,10 +257,20 @@ class ARTWebSocketTransportHook: ClassHook<NSObject> {
                     writeDebugLog("[ABLY] Blocked action \(action) (\(actionName)) at \(elapsed)s")
                     return
                 }
-                // Log action-15 (message) payloads — these may carry logout signals
+                // Filter action-15 (message) payloads.
+                // Spotify sends 'ap://product-state-update' Ably messages that trigger
+                // a fresh re-fetch of the customize endpoint. If the re-fetched response
+                // is not intercepted in time, the app re-enables ad feature flags.
+                // We block these specific messages to prevent ad re-delivery after hours of use.
                 if action == 15 {
                     let preview = String(msgString.prefix(300))
                     writeDebugLog("[ABLY] Message (action 15) at \(elapsed)s: \(preview)")
+                    if msgString.contains("product-state-update") ||
+                       msgString.contains("product_state_update") ||
+                       msgString.contains("productStateUpdate") {
+                        writeDebugLog("[ABLY] Blocked product-state-update message at \(elapsed)s")
+                        return
+                    }
                 }
             }
         }
@@ -289,10 +299,18 @@ class ARTSRWebSocketHook: ClassHook<NSObject> {
                     writeDebugLog("[ABLY-SR] Blocked frame action \(action) (\(actionName)) at \(elapsed)s")
                     return
                 }
-                // Log action-15 (message) payloads — these may carry logout signals
+                // Filter action-15 (message) payloads.
+                // Same as ARTWebSocketTransportHook — block product-state-update messages
+                // that trigger ad re-delivery after a few hours of use.
                 if action == 15 {
                     let preview = String(text.prefix(300))
                     writeDebugLog("[ABLY-SR] Message (action 15) at \(elapsed)s: \(preview)")
+                    if text.contains("product-state-update") ||
+                       text.contains("product_state_update") ||
+                       text.contains("productStateUpdate") {
+                        writeDebugLog("[ABLY-SR] Blocked product-state-update message at \(elapsed)s")
+                        return
+                    }
                 }
             }
         }
@@ -361,6 +379,17 @@ class URLSessionTaskResumeHook: ClassHook<NSObject> {
                 }
                 if elapsed > 30 && path.contains("bootstrap/v1/bootstrap") {
                     writeDebugLog("[NET] Cancelled bootstrap re-fetch at \(elapsedInt)s")
+                    task.cancel()
+                    return
+                }
+                // Block periodic re-fetches of the customize endpoint.
+                // Spotify's RemoteConfigurationSDK AuthFetcher re-fetches the customize
+                // endpoint after minimumFetchIntervalSeconds (typically a few hours).
+                // This re-fetch can bypass the DataLoaderService hook if it uses a
+                // background URLSession, causing ads to reappear.
+                // We block re-fetches after the initial 30s startup window.
+                if elapsed > 30 && path.contains("v1/customize") {
+                    writeDebugLog("[NET] Cancelled customize re-fetch at \(elapsedInt)s")
                     task.cancel()
                     return
                 }
