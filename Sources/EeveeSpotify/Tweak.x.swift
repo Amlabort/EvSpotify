@@ -1,6 +1,7 @@
 import Orion
 import EeveeSpotifyC
 import UIKit
+import Foundation
 
 func writeDebugLog(_ message: String) {
     // Log to system console
@@ -79,6 +80,79 @@ func activatePremiumPatchingGroup() {
     }
 }
 
+// MARK: - Session protection activation
+// Guard each hook group behind runtime checks so minor Spotify updates
+// (e.g., 9.1.34 -> 9.1.36) don't crash the app at launch due to
+// missing private selectors.
+func activateSessionLogoutProtection() {
+    func log(_ msg: String) {
+        NSLog("[EeveeSpotify][SessionProtect] %@", msg)
+    }
+
+    // Auth hooks
+    if let cls = NSClassFromString("SPTAuthSessionImplementation") {
+        let required: [Selector] = [
+            Selector(("logout")),
+            Selector(("logoutWithReason:")),
+            Selector(("callSessionDidLogoutOnDelegateWithReason:")),
+            Selector(("logWillLogoutEventWithLogoutReason:")),
+            Selector(("destroy")),
+        ]
+        let ok = required.allSatisfy { (cls as AnyObject).instancesRespond(to: $0) }
+        if ok {
+            SessionLogoutAuthHookGroup().activate()
+            log("Activated auth hooks")
+        } else {
+            log("Skipped auth hooks (missing selector)")
+        }
+    } else {
+        log("Skipped auth hooks (missing class SPTAuthSessionImplementation)")
+    }
+
+    // Connectivity hooks
+    if let cls = NSClassFromString("_TtC24Connectivity_SessionImpl18SessionServiceImpl") {
+        let required: [Selector] = [
+            Selector(("automatedLogoutThenLogin")),
+            Selector(("userInitiatedLogout")),
+            Selector(("sessionDidLogout:withReason:")),
+        ]
+        let ok = required.allSatisfy { (cls as AnyObject).instancesRespond(to: $0) }
+        if ok {
+            SessionLogoutConnectivityHookGroup().activate()
+            log("Activated connectivity hooks")
+        } else {
+            log("Skipped connectivity hooks (missing selector)")
+        }
+    } else {
+        log("Skipped connectivity hooks (missing class SessionServiceImpl)")
+    }
+
+    // Ably hooks
+    if let cls = NSClassFromString("ARTWebSocketTransport") {
+        let required: [Selector] = [
+            Selector(("webSocket:didReceiveMessage:")),
+            Selector(("webSocket:didFailWithError:")),
+        ]
+        let ok = required.allSatisfy { (cls as AnyObject).instancesRespond(to: $0) }
+        if ok {
+            SessionLogoutAblyHookGroup().activate()
+            log("Activated Ably hooks")
+        } else {
+            log("Skipped Ably hooks (missing selector)")
+        }
+    } else {
+        log("Skipped Ably hooks (missing class ARTWebSocketTransport)")
+    }
+
+    // Network hooks
+    if let cls = NSClassFromString("NSURLSessionTask"), (cls as AnyObject).instancesRespond(to: #selector(URLSessionTask.resume)) {
+        SessionLogoutNetworkHookGroup().activate()
+        log("Activated URLSessionTask hooks")
+    } else {
+        log("Skipped URLSessionTask hooks (missing selector)")
+    }
+}
+
 struct EeveeSpotify: Tweak {
     static let version = "6.6.2"
     static let buildNumber = "1"
@@ -103,7 +177,8 @@ struct EeveeSpotify: Tweak {
     
     init() {
         // Activate session logout protection first (all versions)
-        SessionLogoutHookGroup().activate()
+        // (Guarded to avoid launch crashes on minor Spotify updates)
+        activateSessionLogoutProtection()
 
         let spotifyVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         let spotifyBuild = Bundle.main.infoDictionary!["CFBundleVersion"] as? String ?? "?"
