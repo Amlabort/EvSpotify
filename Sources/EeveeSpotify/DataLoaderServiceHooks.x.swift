@@ -225,6 +225,7 @@ class SPTDataLoaderServiceHook: ClassHook<NSObject>, SpotifySessionDelegate {
                 // Some builds / sessions do not hit SpotifySessionDelegateBootstrapHook reliably.
                 var bootstrapMessage = try BootstrapMessage(serializedBytes: buffer)
                 writeDebugLog("[BOOTSTRAP] (DL) Patching bootstrap UCS response")
+                UserDefaults.hasPatchedBootstrap = true
                 if UserDefaults.patchType == .requests {
                     modifyRemoteConfiguration(&bootstrapMessage.ucsResponse)
                 }
